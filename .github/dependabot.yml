@@ -1,0 +1,37 @@
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+      - "sdk"
+    groups:
+      testing:
+        patterns:
+          - "pytest*"
+          - "coverage"
+      linting:
+        patterns:
+          - "black"
+          - "isort"
+          - "mypy"
+          - "flake8"
+      crypto:
+        patterns:
+          - "pynacl"
+          - "cryptography"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "ci"
